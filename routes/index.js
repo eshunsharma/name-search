@@ -4,8 +4,8 @@ const router = express.Router();
 
 /* Models */
 
-const addModel = require('../model/add.js')
-const searchModel = require('../model/search.js')
+const addModel = require('../models/add.js')
+const searchModel = require('../models/search.js')
 
 /* Add data in MySql Data base. */
 router.get('/add', function(req, res, next) {

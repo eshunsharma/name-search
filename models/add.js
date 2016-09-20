@@ -14,18 +14,18 @@ module.exports = {
 				fname = firstname.toString().split('\n');
 				lname = lastname.toString().split('\n');
 
-				for(i=1;i<=fname.length, i++) {
+				for(i=1;i<=fname.length; i++) {
 					batchData += batchData != ''? ',' : '';
 					lname = lname || '';
-					batchData += '(' i + ',' + fname + ',' + lname + ')'; 
+					batchData += '(' + i + ',' + fname + ',' + lname + ')'; 
 				}
 
 				addDB.addData(batchData, function (data) {
 					callback(data);
 				});
 
-			}
-		}
+			});
+		});
 
 
 	}
