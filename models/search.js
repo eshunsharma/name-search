@@ -1,29 +1,14 @@
-var addDB = require('../db/search.js');
+var searchDB = require('../db/search.js');
 
 module.exports = {
-	searchData : function(callback) {
+	searchData : function(token, callback) {
 
-		fs.readFile('data/firstnames.out', function (err, firstname) {
-			if(err)
-				callback(0);
-			fs.readFile('data/lastnames.out', function (err, lastname) {
-				if(err)
-					callback(0);
-
-				fname = firstname.toString().split('\n');
-				lname = lastname.toString().split('\n');
-
-				for(i=0;i<fname.length, i++) {
-					batchData += batchData != ''? ',' : '';
-					lname = lname || '';
-					batchData += '(' i + ',' + fname + ',' + lname + ')'; 
-				}
-
-				addDB.addData(batchData, function (data) {
-					callback(data);
-				});
-
-			}
+		if(token.length < 3)
+			callback({Code:0, Message: "Token Should be atleast 3 characters"});
+		else {
+			searchDB.searchData(token, function (data) {
+				callback({Code:1, Data: data});
+			});
 		}
 
 
